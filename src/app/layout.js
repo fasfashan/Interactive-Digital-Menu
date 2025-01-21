@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
+import { DataProvider } from "@/app/context/DataProviders";
 import Navbar from "./components/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${raleway.variable}  antialiased`}>
         <Navbar />
-        {children}
+        <DataProvider>{children}</DataProvider>
       </body>
     </html>
   );

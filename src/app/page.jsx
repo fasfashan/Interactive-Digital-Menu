@@ -1,35 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
-import Papa from "papaparse";
-
-export default function FetchCSVData(props) {
-  const [csvData, setCsvData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchCSVData();
-  }, []);
-
-  const fetchCSVData = () => {
-    const csvUrl =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRkqeLVn4bzzrj3e02VEX-GAt5LVLwymMY5RGkVZOpbPpH3GAHBY-eEBLSGr_28MvkULZw1oIInaC2v/pub?output=csv";
-
-    Papa.parse(csvUrl, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        setCsvData(results.data);
-        setIsLoading(false);
-      },
-      error: (error) => {
-        console.error("Error parsing CSV:", error);
-        setError(error.message);
-        setIsLoading(false);
-      },
-    });
-  };
+import { useData } from "@/app/context/DataProviders";
+import HeroSection from "./components/HeroSection";
+import { useState } from "react";
+import Image from "next/image";
+export default function FetchCSVData() {
+  const { csvData, isLoading, error } = useData();
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  console.log("CSV Data:", csvData);
+  console.log(
+    "Filtered Items:",
+    csvData.filter((item) => item.Category === selectedCategory)
+  );
 
   const isValidURL = (url) => {
     if (!url) return false;
@@ -41,71 +22,83 @@ export default function FetchCSVData(props) {
     }
   };
 
+  const categories =
+    csvData.length > 0
+      ? ["All", ...new Set(csvData.map((item) => item.Category))]
+      : [];
+  // Filter items based on selected category
+  const filteredItems =
+    selectedCategory === "All"
+      ? csvData
+      : csvData.filter((item) => item.Category === selectedCategory);
+
   if (error) {
     return <div className="text-red-500 text-center py-4">Error: {error}</div>;
   }
+  const categoryIcons = {
+    All: "/all.svg",
+    "Ala Carte": "/ala-carte.svg",
+    Beverages: "/beverages.svg",
+    "Combo Menu": "/combo-menu.svg",
+    Dessert: "/desert.svg",
+  };
 
   return (
     <>
-      <div className="  items-start justify-start space-y-2 bg-[url('/hero-bg.jpg')] h-[400px] bg-cover bg-center bg-no-repeat">
-        <div className=" space-y-6  max-w-5xl m-auto">
-          <h1 className="font-bold text-7xl max-w-2xl leading-tight pt-20 text-white">
-            Butuh copy di sebelah sini!
-          </h1>
-          <button
-            type="button"
-            className="px-6 font-semibold bg-white border border-neutral-300 shadow-inner py-2 w-fit rounded mt-4"
-          >
-            Lihat menu
-          </button>
+      <HeroSection />
+      <div className="flex gap-4 max-w-5xl m-auto mt-10">
+        {/* Sidebar */}
+        <div className="w-64 bg-white border border-neutral-200 rounded-md p-4 h-fit sticky top-20">
+          <ul className="space-y-2">
+            {categories
+              .filter((category) => category && category.trim() !== "") // Filter kategori kosong
+              .map((category) => (
+                <li
+                  key={category}
+                  className={`cursor-pointer hover:bg-red-100  rounded-md p-2 flex items-center text-black ${
+                    selectedCategory === category
+                      ? "bg-red-100 rounded-md font-semibold"
+                      : "text-neutral-500"
+                  }`}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {/* Tambahkan ikon */}
+                  <img
+                    src={categoryIcons[category] || "/default.svg"} // Gunakan ikon default jika tidak ada
+                    alt={category}
+                    className={`h-5 w-5 mr-2 ${
+                      selectedCategory === category
+                        ? "opacity-100"
+                        : "opacity-50"
+                    }`} // Atur opacity atau efek lain
+                  />
+
+                  {category}
+                </li>
+              ))}
+          </ul>
         </div>
-      </div>
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">CSV Data</h1>
-        {isLoading ? (
-          <p className="text-gray-500 text-center py-4">Loading data...</p>
-        ) : csvData.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  {Object.keys(csvData[0]).map((header, index) => (
-                    <th
-                      key={index}
-                      className="px-4 py-2 border border-gray-300"
-                    >
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {csvData.map((row, rowIndex) => (
-                  <tr
-                    key={rowIndex}
-                    className={rowIndex % 2 === 0 ? "bg-gray-50" : "bg-white"}
-                  >
-                    {Object.entries(row).map(([key, value], colIndex) => (
-                      <td key={colIndex} style={{ padding: "8px" }}>
-                        {key === "Image" && isValidURL(value) ? ( // Validasi URL
-                          <img
-                            src={value}
-                            alt={`Image ${rowIndex + 1}`}
-                            style={{ width: "100px", height: "auto" }}
-                          />
-                        ) : (
-                          value
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-gray-500 text-center py-4">No data available</p>
-        )}
+
+        {/* Main Content */}
+        <div className="flex-1">
+          {isLoading ? (
+            <div>Loading data...</div>
+          ) : (
+            <div className="grid grid-cols-3 gap-4">
+              {filteredItems.map((item, index) => (
+                <div key={index} className="border p-4 rounded-lg text-center">
+                  <img
+                    src="/placeholder.png"
+                    alt={item.Name}
+                    className="w-full h-40 object-cover mb-2"
+                  />
+                  <h3 className="font-medium">{item["Menu Name"]}</h3>
+                  <p className="text-primary font-bold"> {item.Price}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
