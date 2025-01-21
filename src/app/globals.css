@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: var(--font-raleway), sans-serif;
+  scroll-padding-top: 5rem;
+}
