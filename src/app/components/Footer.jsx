@@ -2,7 +2,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <footer className="bg-red-950 mt-20">
+      <footer className="bg-red-950 ">
         <div className="max-w-5xl m-auto flex justify-between">
           <Image
             src="/logo-white.svg"

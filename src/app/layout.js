@@ -3,6 +3,7 @@ import "./globals.css";
 import { DataProvider } from "@/app/context/DataProviders";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CallToAction from "./components/CallToAction";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       <body className={`${raleway.variable}  antialiased`}>
         <Navbar />
         <DataProvider>{children}</DataProvider>
+        <CallToAction />
         <Footer />
       </body>
     </html>
