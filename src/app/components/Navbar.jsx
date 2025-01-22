@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="p-4 sticky bg-white shadow-sm border-b border-neutral-200  top-0">
         <div className="max-w-5xl  m-auto flex justify-between items-center ">
           <Image
-            src="/logo-color.png"
+            src="/logo-color.svg"
             width={1000}
             className="w-24"
             height={32}
