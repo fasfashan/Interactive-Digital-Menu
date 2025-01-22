@@ -4,18 +4,10 @@ import dynamic from "next/dynamic";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
+const Map = dynamic(() => import("./Map"), {
+  ssr: false,
+  loading: () => <div className="min-h-96 bg-gray-100 animate-pulse"></div>,
+});
 
 export default function LocationsPage() {
   const locations = [
@@ -86,17 +78,10 @@ export default function LocationsPage() {
   ];
 
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const mapRef = useRef(null);
   const initialCenter = [-2.5489, 118.0149]; // Center of Indonesia
 
   const handleLocationClick = (location) => {
     setSelectedLocation(location);
-    if (mapRef.current) {
-      mapRef.current.setView(location.coordinates, 16, {
-        animate: true,
-        duration: 1.5,
-      });
-    }
   };
 
   return (
@@ -122,55 +107,34 @@ export default function LocationsPage() {
           </svg>
           Kembali ke Menu
         </Link>
-        <div className="grid grid-cols-12 mt-10 ">
-          {/* Map */}
-          <div className="col-span-12 min-h-96   z-9 container  ">
-            <MapContainer
-              center={initialCenter}
-              zoom={5}
-              style={{ height: "100%", width: "100%" }}
-              ref={mapRef}
-              className="z-8"
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              {locations.map((location) => (
-                <Marker
-                  key={location.id}
-                  position={location.coordinates}
-                  icon={
-                    new Icon({
-                      iconUrl: "/restaurant-marker.png",
-                      iconSize: [32, 32],
-                      iconAnchor: [12, 41],
-                    })
-                  }
-                  eventHandlers={{
-                    click: () => handleLocationClick(location),
-                  }}
-                />
-              ))}
-            </MapContainer>
+        <div className="grid grid-cols-12 mt-10">
+          <div className="col-span-12 min-h-96 z-9 container">
+            <Map
+              locations={locations}
+              selectedLocation={selectedLocation}
+              initialCenter={initialCenter}
+              onLocationSelect={handleLocationClick}
+            />
           </div>
-          {/* Locations List */}
           <div className="col-span-12 mt-10">
-            <div className="">
+            <div>
               <h2 className="text-xl font-semibold mb-4">Our stores</h2>
-
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {locations.map((location) => (
                   <div
                     key={location.id}
-                    className={`p-4 border space-y-4  h-fit rounded-lg cursor-pointer transition-colors ${
+                    className={`p-4 border space-y-4 h-fit rounded-lg cursor-pointer transition-colors ${
                       selectedLocation?.id === location.id
                         ? "bg-red-100 border-red-300"
                         : "hover:bg-red-50"
                     }`}
                     onClick={() => handleLocationClick(location)}
                   >
-                    <img className="rounded-md" src={location.image} alt="" />
+                    <img
+                      className="rounded-md w-full"
+                      src={location.image}
+                      alt=""
+                    />
                     <div className="space-y-2">
                       <h3 className="font-semibold text-sm">{location.name}</h3>
                       <p className="text-gray-600 text-sm">
