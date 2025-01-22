@@ -88,12 +88,16 @@ export default function FetchCSVData() {
               {filteredItems.map((item, index) => (
                 <div key={index} className="border p-4 rounded-lg text-center">
                   <img
-                    src="/placeholder.png"
-                    alt={item.Name}
-                    className="w-full h-40 object-cover mb-2"
+                    src={`/${item["Menu Name"]}.png`}
+                    alt={item["Menu Name"]}
+                    className="w-full h-fit object-cover mb-2"
+                    onError={(e) => {
+                      // Gambar fallback jika tidak ditemukan
+                      e.target.src = "/placeholder.png";
+                    }}
                   />
                   <h3 className="font-medium">{item["Menu Name"]}</h3>
-                  <p className="text-primary font-bold"> {item.Price}</p>
+                  <p className="text-primary font-bold">{item.Price}</p>
                 </div>
               ))}
             </div>
