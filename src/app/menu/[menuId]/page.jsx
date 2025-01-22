@@ -91,39 +91,39 @@ export default function MenuDetail() {
               {menuItem.Description || "Deskripsi menu belum tersedia"}
             </p>
           </div>
-          <div class="max-w-4xl mx-auto p-6  bg-white border border-primary rounded-lg ">
-            <h1 class="text-xl font-bold mb-4 ">Kandungan Nutrisi</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="bg-red-50 p-4 rounded-lg text-center">
-                <p class="text-4xl font-bold">
+          <div className="max-w-4xl mx-auto p-6  bg-white border border-primary rounded-lg ">
+            <h1 className="text-xl font-bold mb-4 ">Kandungan Nutrisi</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-red-50 p-4 rounded-lg text-center">
+                <p className="text-4xl font-bold">
                   {menuItem["Calories (kcal)"]}
-                  <span class="text-sm font-normal"> kcal</span>
+                  <span className="text-sm font-normal"> kcal</span>
                 </p>
-                <p class="mt-2 text-sm">Calories</p>
+                <p className="mt-2 text-sm">Calories</p>
               </div>
-              <div class="bg-red-50 p-4 rounded-lg text-center">
-                <p class="text-4xl font-bold">
+              <div className="bg-red-50 p-4 rounded-lg text-center">
+                <p className="text-4xl font-bold">
                   {menuItem["Sugar (g)"]}{" "}
-                  <span class="text-lg font-normal">g</span>
+                  <span className="text-lg font-normal">g</span>
                 </p>
-                <p class="mt-2 text-sm">Sugar</p>
+                <p className="mt-2 text-sm">Sugar</p>
               </div>
-              <div class="bg-red-50 p-4 rounded-lg text-center">
-                <p class="text-4xl font-bold">
+              <div className="bg-red-50 p-4 rounded-lg text-center">
+                <p className="text-4xl font-bold">
                   {menuItem["Fat (g)"]}{" "}
-                  <span class="text-lg font-normal">g</span>
+                  <span className="text-lg font-normal">g</span>
                 </p>
-                <p class="mt-2 text-sm">Fat</p>
+                <p className="mt-2 text-sm">Fat</p>
               </div>
-              <div class="bg-red-50 p-4 rounded-lg text-center">
-                <p class="text-4xl font-bold">
+              <div className="bg-red-50 p-4 rounded-lg text-center">
+                <p className="text-4xl font-bold">
                   {menuItem["Sodium (mg)"]}{" "}
-                  <span class="text-lg font-normal">mg</span>
+                  <span className="text-lg font-normal">mg</span>
                 </p>
-                <p class="mt-2 text-sm">Sodium</p>
+                <p className="mt-2 text-sm">Sodium</p>
               </div>
             </div>
-            <p class="mt-6 text-sm text-gray-600">
+            <p className="mt-6 text-sm text-gray-600">
               Informasi nutrisi ini berasal dari pengujian yang dilakukan di
               laboratorium terakreditasi, sumber yang diterbitkan, dan/atau
               informasi yang diberikan oleh pemasok Murni Resto.

@@ -4,16 +4,19 @@ import HeroSection from "./components/HeroSection";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 export default function FetchCSVData() {
   const { csvData, isLoading, error } = useData();
   const [selectedCategory, setSelectedCategory] = useState("All");
+
   const createSlug = (text) => {
     return text
       .toLowerCase()
-      .replace(/ /g, "-") // Ganti spasi dengan dash
-      .replace(/[^\w-]+/g, "") // Hapus karakter special
-      .replace(/--+/g, "-"); // Ganti multiple dash dengan single dash
+      .replace(/ /g, "-")
+      .replace(/[^\w-]+/g, "")
+      .replace(/--+/g, "-");
   };
+
   const isValidURL = (url) => {
     if (!url) return false;
     try {
@@ -24,19 +27,29 @@ export default function FetchCSVData() {
     }
   };
 
+  // Sort categories alphabetically, keeping "All" at the beginning
   const categories =
     csvData.length > 0
-      ? ["All", ...new Set(csvData.map((item) => item.Category))]
+      ? ["All", ...new Set(csvData.map((item) => item.Category))].sort(
+          (a, b) => {
+            if (a === "All") return -1;
+            if (b === "All") return 1;
+            return a.localeCompare(b);
+          }
+        )
       : [];
-  // Filter items based on selected category
-  const filteredItems =
+
+  // Filter and sort items based on selected category
+  const filteredItems = (
     selectedCategory === "All"
-      ? csvData
-      : csvData.filter((item) => item.Category === selectedCategory);
+      ? [...csvData]
+      : csvData.filter((item) => item.Category === selectedCategory)
+  ).sort((a, b) => a["Menu Name"].localeCompare(b["Menu Name"]));
 
   if (error) {
     return <div className="text-red-500 text-center py-4">Error: {error}</div>;
   }
+
   const categoryIcons = {
     All: "/all.svg",
     "Ala Carte": "/ala-carte.svg",
@@ -53,28 +66,26 @@ export default function FetchCSVData() {
         <div className="w-64 bg-white border border-neutral-200 rounded-md p-4 h-fit sticky top-20">
           <ul className="space-y-2">
             {categories
-              .filter((category) => category && category.trim() !== "") // Filter kategori kosong
+              .filter((category) => category && category.trim() !== "")
               .map((category) => (
                 <li
                   key={category}
-                  className={`cursor-pointer hover:bg-red-100  rounded-md p-2 flex items-center text-black ${
+                  className={`cursor-pointer hover:bg-red-100 rounded-md p-2 flex items-center text-black ${
                     selectedCategory === category
                       ? "bg-red-100 rounded-md font-semibold"
                       : "text-neutral-500"
                   }`}
                   onClick={() => setSelectedCategory(category)}
                 >
-                  {/* Tambahkan ikon */}
                   <img
-                    src={categoryIcons[category] || "/default.svg"} // Gunakan ikon default jika tidak ada
+                    src={categoryIcons[category] || "/default.svg"}
                     alt={category}
                     className={`h-5 w-5 mr-2 ${
                       selectedCategory === category
                         ? "opacity-100"
                         : "opacity-50"
-                    }`} // Atur opacity atau efek lain
+                    }`}
                   />
-
                   {category}
                 </li>
               ))}
