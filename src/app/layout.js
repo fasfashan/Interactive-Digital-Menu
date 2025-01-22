@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
 import { DataProvider } from "@/app/context/DataProviders";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <body className={`${raleway.variable}  antialiased`}>
         <Navbar />
         <DataProvider>{children}</DataProvider>
+        <Footer />
       </body>
     </html>
   );
