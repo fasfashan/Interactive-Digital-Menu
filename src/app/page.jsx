@@ -3,15 +3,17 @@ import { useData } from "@/app/context/DataProviders";
 import HeroSection from "./components/HeroSection";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function FetchCSVData() {
   const { csvData, isLoading, error } = useData();
   const [selectedCategory, setSelectedCategory] = useState("All");
-  console.log("CSV Data:", csvData);
-  console.log(
-    "Filtered Items:",
-    csvData.filter((item) => item.Category === selectedCategory)
-  );
-
+  const createSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/ /g, "-") // Ganti spasi dengan dash
+      .replace(/[^\w-]+/g, "") // Hapus karakter special
+      .replace(/--+/g, "-"); // Ganti multiple dash dengan single dash
+  };
   const isValidURL = (url) => {
     if (!url) return false;
     try {
@@ -86,19 +88,22 @@ export default function FetchCSVData() {
           ) : (
             <div className="grid grid-cols-3 gap-4">
               {filteredItems.map((item, index) => (
-                <div key={index} className="border p-4 rounded-lg text-center">
+                <Link
+                  href={`/menu/${createSlug(item["Menu Name"])}`}
+                  key={index}
+                  className="border p-4 rounded-lg text-center block hover:shadow-lg transition-shadow"
+                >
                   <img
                     src={`/${item["Menu Name"]}.png`}
                     alt={item["Menu Name"]}
                     className="w-full h-fit object-cover mb-2"
                     onError={(e) => {
-                      // Gambar fallback jika tidak ditemukan
                       e.target.src = "/placeholder.png";
                     }}
                   />
                   <h3 className="font-medium">{item["Menu Name"]}</h3>
                   <p className="text-primary font-bold">{item.Price}</p>
-                </div>
+                </Link>
               ))}
             </div>
           )}

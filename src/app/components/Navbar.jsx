@@ -5,13 +5,15 @@ export default function Navbar() {
     <>
       <div className="p-4 sticky bg-white shadow-sm border-b border-neutral-200 z-10  top-0">
         <div className="max-w-5xl  m-auto flex justify-between items-center ">
-          <Image
-            src="/logo-color.svg"
-            width={1000}
-            className="w-24"
-            height={32}
-            alt="Logo Color"
-          />
+          <Link href="/">
+            <Image
+              src="/logo-color.svg"
+              width={1000}
+              className="w-24"
+              height={32}
+              alt="Logo Color"
+            />
+          </Link>
           <ul className="flex items-center gap-10 font-medium text-lg">
             <Link className="hover:opacity-60 transition-all" href="/">
               <li>Menu</li>

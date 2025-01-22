@@ -25,8 +25,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${raleway.variable}  antialiased`}>
+    <html className="scroll-smooth" lang="en">
+      <body className={`${raleway.variable}  antialiased `}>
         <Navbar />
         <DataProvider>{children}</DataProvider>
         <CallToAction />

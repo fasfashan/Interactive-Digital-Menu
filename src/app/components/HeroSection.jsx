@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function HeroSection() {
   return (
     <>
@@ -6,12 +7,12 @@ export default function HeroSection() {
           <h1 className="font-bold tracking-tight text-7xl max-w-2xl leading-tight  text-white">
             Butuh copy di sebelah sini!
           </h1>
-          <button
-            type="button"
+          <Link
             className="px-6 font-semibold bg-white border border-neutral-300 shadow-inner py-2 w-fit rounded mt-4"
+            href="#cta"
           >
-            Lihat menu
-          </button>
+            Download App
+          </Link>
         </div>
       </div>
     </>
