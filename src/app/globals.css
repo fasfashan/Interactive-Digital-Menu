@@ -6,3 +6,10 @@
   font-family: var(--font-raleway), sans-serif;
   scroll-padding-top: 5rem;
 }
+
+.navbar {
+  z-index: 1000;
+}
+.leaflet-control-container {
+  z-index: 99 !important;
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <div className="p-4 sticky bg-white shadow-sm border-b border-neutral-200 z-10  top-0">
+      <div className="p-4 navbar sticky bg-white shadow-sm border-b border-neutral-200 z-10  top-0">
         <div className="max-w-5xl  m-auto flex justify-between items-center ">
           <Link href="/">
             <Image
@@ -14,14 +14,14 @@ export default function Navbar() {
               alt="Logo Color"
             />
           </Link>
-          <ul className="flex items-center gap-10 font-medium text-lg">
+          <ul className="flex items-center gap-10 font-medium ">
             <Link className="hover:opacity-60 transition-all" href="/">
               <li>Menu</li>
             </Link>
             <Link className="hover:opacity-60 transition-all" href="/">
               <li>Promo</li>
             </Link>
-            <Link className="hover:opacity-60 transition-all" href="/">
+            <Link className="hover:opacity-60 transition-all" href="/locations">
               <li>Locations</li>
             </Link>
           </ul>
