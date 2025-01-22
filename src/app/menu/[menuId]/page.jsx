@@ -113,7 +113,7 @@ export default function MenuDetail() {
                   {menuItem["Fat (g)"]}{" "}
                   <span class="text-lg font-normal">g</span>
                 </p>
-                <p class="mt-2 text-sm">Far</p>
+                <p class="mt-2 text-sm">Fat</p>
               </div>
               <div class="bg-red-50 p-4 rounded-lg text-center">
                 <p class="text-4xl font-bold">
