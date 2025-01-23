@@ -1,10 +1,4 @@
-import {
-  Geist,
-  Geist_Mono,
-  Raleway,
-  DM_Sans,
-  Open_Sans,
-} from "next/font/google";
+import { Geist, Geist_Mono, Raleway, Ro, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { DataProvider } from "@/app/context/DataProviders";
 import Navbar from "./components/Navbar";
@@ -36,11 +30,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`${openSans.variable}  antialiased `}>
+      <body
+        className={`${openSans.variable} antialiased flex flex-col min-h-screen`}
+      >
         <Navbar />
-        <DataProvider>{children}</DataProvider>
-        <CallToAction />
-        <Footer />
+        <DataProvider>
+          <main className="flex-grow">{children}</main>
+        </DataProvider>
+
+        <div className="mt-auto">
+          <CallToAction />
+          <Footer />
+        </div>
       </body>
     </html>
   );

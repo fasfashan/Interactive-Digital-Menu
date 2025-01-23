@@ -1,7 +1,8 @@
 import Image from "next/image";
+import CallToAction from "./CallToAction";
 export default function Footer() {
   return (
-    <>
+    <div className="">
       <footer className="bg-red-950 ">
         <div className="max-w-5xl m-auto flex justify-between">
           <Image
@@ -23,6 +24,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
