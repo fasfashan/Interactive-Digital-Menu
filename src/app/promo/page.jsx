@@ -3,10 +3,10 @@ import Slider from "../components/Slider";
 import Link from "next/link";
 export default function PromoPage() {
   return (
-    <div className="max-w-5xl m-auto mt-10">
+    <div className="max-w-5xl px-3 m-auto mt-10">
       <Link
         href="/"
-        className="text-primary font-semibold hover:underline flex items-center gap-2 mb-10"
+        className="text-primary ml-3 font-semibold hover:underline flex items-center gap-2 mb-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

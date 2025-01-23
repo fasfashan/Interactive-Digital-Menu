@@ -61,7 +61,7 @@ export default function FetchCSVData() {
   return (
     <>
       <HeroSection />
-      <div className="flex gap-4 max-w-5xl m-auto mt-10">
+      <div className="flex gap-4 max-w-5xl px-3 m-auto mt-10">
         {/* Sidebar */}
         <div className="w-64 bg-white border border-neutral-200 rounded-md p-4 h-fit sticky top-20">
           <ul className="space-y-2">

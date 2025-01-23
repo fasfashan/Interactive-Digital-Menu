@@ -68,7 +68,7 @@ export default function LocationPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl px-3 mx-auto">
       <Link
         href="/"
         className="text-primary font-semibold hover:underline flex items-center gap-2 mt-10 mb-10"

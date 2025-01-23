@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className="">
       <footer className="bg-red-950 ">
-        <div className="max-w-5xl m-auto flex justify-between">
+        <div className="max-w-5xl m-auto px-3 flex justify-between">
           <Image
             src="/logo-white.svg"
             width={1000}

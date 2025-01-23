@@ -50,7 +50,7 @@ export default function MenuDetail() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-4 mt-10">
+    <div className="max-w-5xl mx-auto px-3 mt-10">
       <Link
         href="/"
         className="text-primary font-semibold hover:underline flex items-center gap-2  mb-10"

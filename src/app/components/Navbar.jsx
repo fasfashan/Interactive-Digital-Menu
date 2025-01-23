@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <>
       <div className="p-4 navbar sticky bg-white shadow-sm border-b border-neutral-200 z-10  top-0">
-        <div className="max-w-5xl  m-auto flex justify-between items-center ">
+        <div className="max-w-5xl  px-3 m-auto flex justify-between items-center ">
           <Link href="/">
             <Image
               src="/logo-color.svg"
