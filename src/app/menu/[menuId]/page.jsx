@@ -145,7 +145,7 @@ export default function MenuDetail() {
       </div>
       {relatedMenus.length > 0 && (
         <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-6">Other Related Food</h2>
+          <h2 className="text-2xl font-bold mb-6">Other Recommended Menu</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {relatedMenus.map((item, index) => (
               <Link
