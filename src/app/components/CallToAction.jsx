@@ -2,7 +2,7 @@ export default function CallToAction() {
   return (
     <>
       <div id="cta" className=" bg-neutral-200 pt-14 mt-20">
-        <div className="container max-w-5xl m-auto grid grid-cols-12 items-center  justify-between">
+        <div className="container max-w-5xl px-3 m-auto grid grid-cols-12 items-center  justify-between">
           <div className="flex flex-col col-span-7 gap-8">
             <h1 className="text-5xl font-extrabold max-w-md ">
               Menu in Your Pocket, Flavor at Your Fingertips!
