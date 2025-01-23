@@ -18,11 +18,11 @@ export default function Navbar() {
             <Link className="hover:opacity-60 transition-all" href="/">
               <li>Menu</li>
             </Link>
-            <Link className="hover:opacity-60 transition-all" href="/">
+            <Link className="hover:opacity-60 transition-all" href="/promo">
               <li>Promo</li>
             </Link>
-            <Link className="hover:opacity-60 transition-all" href="/locations">
-              <li>Locations</li>
+            <Link className="hover:opacity-60 transition-all" href="/store">
+              <li>Store</li>
             </Link>
           </ul>
         </div>
