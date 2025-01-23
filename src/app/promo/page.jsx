@@ -22,7 +22,7 @@ export default function PromoPage() {
             fill="#C12126"
           />
         </svg>
-        Kembali ke Menu
+        Back to menu
       </Link>
       <Slider />
 

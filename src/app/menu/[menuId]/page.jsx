@@ -32,7 +32,7 @@ export default function MenuDetail() {
             href="/"
             className="text-blue-500 hover:underline mt-4 inline-block"
           >
-            Kembali ke Menu
+            Back to menu
           </Link>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default function MenuDetail() {
               fill="#C12126"
             />
           </svg>
-          Kembali ke Menu
+          Back to menu
         </Link>
       </div>
 
@@ -92,41 +92,60 @@ export default function MenuDetail() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto p-6  bg-white border border-primary rounded-lg ">
-            <h1 className="text-xl font-bold mb-4 ">Kandungan Nutrisi</h1>
+            <h1 className="text-xl font-bold mb-4 ">Nutritional Facts</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-red-50 p-4 rounded-lg text-center">
-                <p className="text-4xl font-bold">
-                  {menuItem["Calories (kcal)"]}
-                  <span className="text-sm font-normal"> kcal</span>
-                </p>
+                <div className="flex gap-1 items-start justify-center">
+                  <p className="text-4xl font-bold">
+                    {menuItem["Calories (kcal)"]}
+                  </p>
+                  <span className="text-sm font-normal text-neutral-500">
+                    {" "}
+                    kcal
+                  </span>
+                </div>
                 <p className="mt-2 text-sm">Calories</p>
               </div>
               <div className="bg-red-50 p-4 rounded-lg text-center">
-                <p className="text-4xl font-bold">
-                  {menuItem["Sugar (g)"]}{" "}
-                  <span className="text-lg font-normal">g</span>
-                </p>
+                <div className="flex gap-1 items-start justify-center">
+                  <p className="text-4xl font-bold">{menuItem["Sugar (g)"]}</p>
+                  <span className="text-sm font-normal text-neutral-500">
+                    {" "}
+                    g
+                  </span>
+                </div>
+
                 <p className="mt-2 text-sm">Sugar</p>
               </div>
               <div className="bg-red-50 p-4 rounded-lg text-center">
-                <p className="text-4xl font-bold">
-                  {menuItem["Fat (g)"]}{" "}
-                  <span className="text-lg font-normal">g</span>
-                </p>
+                <div className="flex gap-1 items-start justify-center">
+                  <p className="text-4xl font-bold">{menuItem["Fat (g)"]}</p>
+                  <span className="text-sm font-normal text-neutral-500">
+                    {" "}
+                    g
+                  </span>
+                </div>
                 <p className="mt-2 text-sm">Fat</p>
               </div>
               <div className="bg-red-50 p-4 rounded-lg text-center">
-                <p className="text-4xl font-bold">
-                  {menuItem["Sodium (mg)"]}{" "}
-                  <span className="text-lg font-normal">mg</span>
-                </p>
+                <div className="flex gap-1 items-start justify-center">
+                  <p className="text-4xl font-bold">
+                    {menuItem["Sodium (mg)"]}
+                  </p>
+                  <span className="text-sm font-normal text-neutral-500">
+                    {" "}
+                    mg
+                  </span>
+                </div>
+
                 <p className="mt-2 text-sm">Sodium</p>
               </div>
             </div>
             <p className="mt-6 text-sm text-gray-600">
-              Informasi nutrisi ini berasal dari pengujian yang dilakukan di
-              laboratorium terakreditasi, sumber yang diterbitkan, dan/atau
-              informasi yang diberikan oleh pemasok Murni Resto.
+              Nutritional information is based on standard recipes and may vary.
+              Actual values can be affected by preparation, portion size, and
+              ingredient substitutions. For dietary needs or allergies, please
+              consult our staff.
             </p>
           </div>
           {/* <Link
