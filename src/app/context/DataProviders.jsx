@@ -12,7 +12,7 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     const csvUrl =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRmM3pJjdbtY4aZmsvRdIxJ-bmLfAV3EPksP-ote9ue4TeALr4qeeHgRr0HhWLL4kMSoZS5EJBb1dpB/pub?output=csv";
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRkqeLVn4bzzrj3e02VEX-GAt5LVLwymMY5RGkVZOpbPpH3GAHBY-eEBLSGr_28MvkULZw1oIInaC2v/pub?output=csv";
 
     Papa.parse(csvUrl, {
       download: true,

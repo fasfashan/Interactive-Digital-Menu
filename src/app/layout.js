@@ -1,4 +1,10 @@
-import { Geist, Geist_Mono, Raleway, DM_Sans } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Raleway,
+  DM_Sans,
+  Open_Sans,
+} from "next/font/google";
 import "./globals.css";
 import { DataProvider } from "@/app/context/DataProviders";
 import Navbar from "./components/Navbar";
@@ -12,8 +18,8 @@ const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
 });
-const dmSans = DM_Sans({
-  variable: "--font-dm_sans",
+const openSans = Open_Sans({
+  variable: "--font-open_sans",
   subsets: ["latin"],
 });
 
@@ -30,7 +36,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`${dmSans.variable}  antialiased `}>
+      <body className={`${openSans.variable}  antialiased `}>
         <Navbar />
         <DataProvider>{children}</DataProvider>
         <CallToAction />
