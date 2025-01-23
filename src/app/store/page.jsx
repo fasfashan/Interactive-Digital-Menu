@@ -10,7 +10,7 @@ export default function LocationPage() {
       address: "Jl. Lkr. Luar Barat No.1, RT.7/RW.6, Duri Kosambi",
       coordinates: [106.72643188844603, -6.161330325208144], // [longitude, latitude]
       contact: "+62 21 1234567",
-      image: "/murni-resto-jakarta.jpg",
+      image: "/store.jpg",
       openHours: "09:00 - 23:00",
     },
     {
@@ -19,7 +19,7 @@ export default function LocationPage() {
       address: "Rukan Taman Meruya, Blok M No.41-43 A, Meruya Utara0",
       coordinates: [106.73938178290035, -6.192115768994093],
       contact: "+62 21 7654321",
-      image: "/murni-resto-bandung.jpg",
+      image: "/meruya.jpg",
       openHours: "08:00 - 22:00",
     },
     {
@@ -28,7 +28,7 @@ export default function LocationPage() {
       address: "Jl. Margonda No.56, Depok, Kec. Pancoran Mas",
       coordinates: [106.82364731843724, -6.392299383128017],
       contact: "+62 21 9876543",
-      image: "/murni-resto-semarang.jpg",
+      image: "/depok.jpg",
       openHours: "09:00 - 23:00",
     },
     {
@@ -37,7 +37,7 @@ export default function LocationPage() {
       address: "Jl. Nasional 11, RT.05/RW.09, Kedung Jaya4",
       coordinates: [106.7851626235993, -6.558406520012516],
       contact: "+62 251 6543210",
-      image: "/murni-resto-surabaya.jpg",
+      image: "/bogor.jpg",
       openHours: "10:00 - 24:00",
     },
     {
@@ -46,7 +46,7 @@ export default function LocationPage() {
       address: "Jl. Ahmad Yani No.Kav. 1, RT.005/RW.002, Pekayon Jaya",
       coordinates: [106.98992158381697, -6.25423484700718],
       contact: "+62 21 5432109",
-      image: "/murni-resto-yogyakarta.jpg",
+      image: "/bekasi.jpg",
       openHours: "08:00 - 22:00",
     },
     {
@@ -55,7 +55,7 @@ export default function LocationPage() {
       address: "Cilandak, Jl. Puri Mutiara Raya No.35D, RT.9/RW.11",
       coordinates: [106.8118085818936, -6.276631432024719],
       contact: "+62 21 27529",
-      image: "/murni-resto-kemang.jpg",
+      image: "/kemang.jpg",
       openHours: "08:00 - 22:00",
     },
   ];
